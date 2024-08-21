@@ -25,12 +25,13 @@ router.get("/",wrapAsync(async(req,res) => {
 }));
 
 //New Route
-router.get("/new",(req,res)=>{
+router.get("/new",isLoggedIn,(req,res)=>{
     res.render("./listings/new.ejs")
 })
 
 //Show Route
-router.get("/:id",wrapAsync(async(req,res)=>{
+router.get("/:id",
+    wrapAsync(async(req,res)=>{
     let {id}= req.params;
     const listing = await Listing.findById(id).populate("reviews");
     if(!listing){

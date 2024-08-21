@@ -33,7 +33,7 @@ router.post("/login",
         failureFlash:true,
     }),
     async(req,res)=>{
-        req.flash("success","Welcone back to Wanderlust!");
+        req.flash("success","Welcome back to Wanderlust!");
         res.redirect("/listings");
     }
 );
